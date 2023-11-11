@@ -54,7 +54,6 @@ const Quiz = ({ questions, masteries }) => {
 
     combinations.push(`${firstMastery} and ${secondMastery}`);
     descriptions.push(`${firstDescription} and ${secondDescription}`)
-    // Check if there are additional masteries with the same value as the second highest
     for (let i = 2; i < masteries.length; i++) {
       const currentMastery = Object.keys(masteries[i])[0];
       if (Object.values(masteries[i])[0] === Object.values(masteries[1])[0]) {
@@ -71,12 +70,13 @@ const Quiz = ({ questions, masteries }) => {
     const firstDescription = Object.values(topMasteries[0])[1];
     const secondDescription = Object.values(topMasteries[1])[1];
 
-    descriptions.push(`${firstDescription} and ${secondDescription}`)
-    // Check if there are additional masteries with the same value as the second highest
+    descriptions.push(`${firstDescription}`);
+    descriptions.push(`${secondDescription}`);
     for (let i = 2; i < masteries.length; i++) {
       const currentMasteryDescription = Object.values(masteries[i])[1];
       if (Object.values(masteries[i])[0] === Object.values(masteries[1])[0]) {
-        descriptions.push(`${firstDescription} and ${currentMasteryDescription}`);
+        // descriptions.push(`${firstDescription}`);
+        descriptions.push(`${currentMasteryDescription}`);
       }
     }
     
