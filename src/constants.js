@@ -1,17 +1,17 @@
 export const jsQuizz = {
     masteries: [
-      {Fire: 0, description:"(Fire description)"},
-      {Wind: 0, description:"(Wind description)"},
-      {Earth: 0, description:"(Earth description)"},
-      {Water: 0, description:"(Water description)"},
-      {Medic: 0, description:"(Medic description)"},
-      {STR_WM: 0, description:"(STR WM description)"},
-      {INT_WM: 0, description:"(INT WM description)"},
-      {Taijutsu: 0, description:"(Taijutsu description)"},
-      {Lightning: 0, description:"(Lightning description)"},
-      {Fan: 0, description:"(Fan description)"},
-      {Bubble: 0, description:"(Bubble description)"},
-      {Gentle_fist: 0, description:"(Gentle Fist description)"},
+      {Fire: 0, description:"(Fire description)", chartData: {endurance: 3, support: 2, damage: 5, aoe:5, cc:2}},
+      {Wind: 0, description:"(Wind description)", chartData: {endurance: 2, support: 2, damage: 4, aoe:2, cc:2}},
+      {Earth: 0, description:"(Earth description)", chartData: {endurance: 4, support: 5, damage: 3, aoe:4, cc:5}},
+      {Water: 0, description:"(Water description)", chartData: {endurance: 5, support: 2, damage: 3, aoe:2, cc:2}},
+      {Medic: 0, description:"(Medic description)", chartData: {endurance: 3, support: 5, damage: 3, aoe:1, cc:1}},
+      {STR_WM: 0, description:"(STR WM description)", chartData: {endurance: 3, support: 1, damage: 5, aoe:1, cc:3}},
+      {INT_WM: 0, description:"(INT WM description)", chartData: {endurance: 2, support: 2, damage: 5, aoe:3, cc:1}},
+      {Taijutsu: 0, description:"(Taijutsu description)", chartData: {endurance: 5, support: 2, damage: 4, aoe:3, cc:2}},
+      {Lightning: 0, description:"(Lightning description)", chartData: {endurance: 2, support: 4, damage: 4, aoe:2, cc:5}},
+      {Fan: 0, description:"(Fan description)", chartData: {endurance: 3, support: 3, damage: 4, aoe:3, cc:3}},
+      {Bubble: 0, description:"(Bubble description)", chartData: {endurance: 2, support: 4, damage: 2, aoe:4, cc:5}},
+      {Gentle_fist: 0, description:"(Gentle Fist description)", chartData: {endurance: 2, support: 2, damage: 5, aoe:2, cc:3}},
     ],
     questions: [
       {
@@ -88,13 +88,3 @@ export const jsQuizz = {
       },
     ],
   };
-
-
-
-
-
-
-  //Are you more interested in classes that excel in controlling the battlefield or those that focus on dealing massive damage?
-
-  
-  //In player vs. player (PvP) situations, do you prefer one-on-one duels, small skirmishes, or large-scale battlegrounds?
