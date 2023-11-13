@@ -6,6 +6,7 @@ const Quiz = ({ questions, masteries }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answerIndex, setAnswerIndex] = useState(null);
   const [showResult, setShowResult] = useState(false);
+  const [answersHistory, setanswersHistory] = useState([]);
 
   const { question, choices } = questions[currentQuestion];
   // console.log(masteries);
@@ -17,8 +18,13 @@ const Quiz = ({ questions, masteries }) => {
     }
   };
 
+  const getanswersHistory = (selectedAnswer, index) => {
+    answersHistory.push(selectedAnswer.text);
+  }
+
   const onAnswerClick = (selectedAnswer, index) => {
     setAnswerIndex(index);
+    getanswersHistory(selectedAnswer, index);
 
     if (currentQuestion !== questions.length) {
       if (selectedAnswer.value) {
@@ -35,6 +41,7 @@ const Quiz = ({ questions, masteries }) => {
       setShowResult(true);
     }
   };
+
 
   const getTopMasteries = () => {
     return masteries
@@ -87,7 +94,7 @@ const Quiz = ({ questions, masteries }) => {
       const firstChartDataList = {
         label: Object.keys(topMasteries[0])[0], // Etykieta zestawu danych, widoczna w legendzie
         data: [], // Tablica wartości punktów w zestawie danych
-        backgroundColor: "rgba(252, 147, 47, 0.7)", // Kolor wypełnienia obszaru pod linią
+        backgroundColor: "rgba(252, 147, 47, 0.6)", // Kolor wypełnienia obszaru pod linią
         borderColor: "rgba(252, 147, 47, 0.9)", // Kolor obramowania linii
         borderWidth: 1, // Grubość obramowania linii
         pointBorderWidth: 2, // Grubość obramowania punktów
@@ -110,7 +117,7 @@ const Quiz = ({ questions, masteries }) => {
       const secondChartDataList = {
         label: Object.keys(topMasteries[1])[0], // Etykieta zestawu danych, widoczna w legendzie
         data: [], // Tablica wartości punktów w zestawie danych
-        backgroundColor: "rgba(124, 0, 195, 0.77)", // Kolor wypełnienia obszaru pod linią
+        backgroundColor: "rgba(124, 0, 195, 0.6)", // Kolor wypełnienia obszaru pod linią
         borderColor: "rgba(124, 0, 195, 1)", // Kolor obramowania linii
         borderWidth: 1, // Grubość obramowania linii
         pointBorderWidth: 2, // Grubość obramowania punktów
@@ -185,6 +192,10 @@ const Quiz = ({ questions, masteries }) => {
           </>
         ) : (
           <div className="quiz__result">
+            <h2>Answers:</h2>
+              <ul>
+                <p className="quiz__question">{answersHistory.map((question, index) => <li key={index}>Answer {index+1}: {question}.</li>)}</p>
+              </ul>
             <h3>You should try:</h3>
             {getMasteryCombinations().map((combination, index) => (
               <div key={index} className="quiz__combinations">
