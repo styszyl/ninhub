@@ -7,6 +7,7 @@ const Quiz = ({ questions, masteries }) => {
   const [answerIndex, setAnswerIndex] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [answersHistory, setanswersHistory] = useState([]);
+  const [showAnswers, setshowAnswers] = useState(false);
 
   const { question, choices } = questions[currentQuestion];
   // console.log(masteries);
@@ -17,6 +18,11 @@ const Quiz = ({ questions, masteries }) => {
       setShowResult(true);
     }
   };
+
+  const changeshowAnswers = () => {
+    setshowAnswers(!showAnswers);
+    console.log(showAnswers);
+  }
 
   const getanswersHistory = (selectedAnswer, index) => {
     answersHistory.push(selectedAnswer.text);
@@ -192,10 +198,13 @@ const Quiz = ({ questions, masteries }) => {
           </>
         ) : (
           <div className="quiz__result">
-            <h2>Answers:</h2>
-              <ul>
-                <p className="quiz__question">{answersHistory.map((question, index) => <li key={index}>Answer {index+1}: {question}.</li>)}</p>
-              </ul>
+            <button onClick={() => changeshowAnswers()}>Show answers</button>
+            <section className="quiz__section" hidden={showAnswers? false:true}>
+              <h2>Answers:</h2>
+                <ul>
+                  <p className="quiz__question">{answersHistory.map((question, index) => <li key={index}>Answer {index+1}: {question}.</li>)}</p>
+                </ul>
+            </section>
             <h3>You should try:</h3>
             {getMasteryCombinations().map((combination, index) => (
               <div key={index} className="quiz__combinations">
